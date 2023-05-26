@@ -2,7 +2,7 @@ import React from 'react'
 import Image  from './Image';
 const Card = (props) => {
   return (
-    <>
+    <>  
       <div className='cards'>
             <div className='card'>
             <Image imgsrc={props.image}/>
