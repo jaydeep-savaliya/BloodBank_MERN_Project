@@ -21,10 +21,10 @@ router.post('/Donate',async(req,res)=>{
     try {
         const emailid = await Registerdata.findOne({email:email});
         // console.log(emailid);
-        console.log(email);
-        console.log(phone);
-        console.log(emailid.email);
-        console.log(emailid.phone);
+        // console.log(email);
+        // console.log(phone);
+        // console.log(emailid.email);
+        // console.log(emailid.phone);
         if(emailid!=null){
             if(email==emailid.email && phone==emailid.phone){
                 const data = await Donate({name,email,phone,work,date,gender,address,bloodgroup});

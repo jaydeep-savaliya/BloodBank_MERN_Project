@@ -29,14 +29,14 @@ mongoose.connect(DB,{
 //     image:"https://rarest.org/wp-content/uploads/2019/10/AB-Negative.png",
 // }
 // ]);
-BloodData.create({
-    state:"Gujrat",
-    district:"Ahmedabad",
-    bloodgroup:"O-Positive",
-    location:"1st Floor, Chandraprabhu Complex, Stadium Road Sardar Patel Statue Coss Road, Stadium Road Sardar Patel Statue Coss Road, Ahmedabad, Gujarat 380014",
-    stockavailability:10000,
-    rate:5000,
-})
+// BloodData.create({
+//     state:"Gujrat",
+//     district:"Ahmedabad",
+//     bloodgroup:"O-Positive",
+//     location:"1st Floor, Chandraprabhu Complex, Stadium Road Sardar Patel Statue Coss Road, Stadium Road Sardar Patel Statue Coss Road, Ahmedabad, Gujarat 380014",
+//     stockavailability:10000,
+//     rate:5000,
+// })
 // const getData = async()=>{
 //     const data = await BloodData.find({},{"state":1,_id:0});
 //     console.log(data);
