@@ -25,20 +25,26 @@ const Home = () => {
     <>
       <section id='home_section'>
         <div className='row'>
-          <div className='col col-md-6' id='carosoul'>
-              <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src={img} class="d-block w-100" alt="..."/>
+          <div className='img_carosoul'>
+            <div className='col'> </div>
+          <div className='col col-8' id='carosoul'>
+              <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
+                <div className="carousel-inner">
+                  <div className="carousel-item active">
+                    <img src={img} className="d-block w-100" alt="..."/>
                   </div>
-                  <div class="carousel-item">
-                    <img src={img} class="d-block w-100" alt="..."/>
+                  <div className="carousel-item">
+                    <img src={img} className="d-block w-100" alt="..."/>
                   </div>
-                  <div class="carousel-item">
-                    <img src={img} class="d-block w-100" alt="..."/>
+                  <div className="carousel-item">
+                    <img src={img} className="d-block w-100" alt="..."/>
                   </div>
                 </div>
               </div>
+          </div>
+          <div className='col'>
+
+          </div>
           </div>
         </div>
         <div className='row'>
@@ -49,10 +55,10 @@ const Home = () => {
         <div className='row'>
           <div className='col'>
             {
-              data.map((val)=>{
+              data.map((val,index)=>{
                 return(
                   <Card
-                  key={val.id}
+                  key={index}
                   information={val.information}
                   name={val.name}
                   percentage={val.percentage}

@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import sign_img  from '../image/6310507.jpg';
 const Login = () => {
   const navigate = useNavigate();
+  const [message,setMessage] = useState('');
   const [user,setUser] = useState({
     email:"",password:""
   });
@@ -17,17 +18,22 @@ const Login = () => {
   }
   const DoLogin = async(e)=>{
     e.preventDefault();
-    const {email,password} = user;
+    // const {email,password} = user;
     try {
-      await axios.post('/Login',user).then((Response)=>{
-        if(Response.data==="success"){
-          navigate('/');
-        }else if(Response.data==="Password Not Match"){
-          window.alert("Password Are Not Match");
-        }else{
-          window.alert("Please Register First");
-        }
-      })
+      const regEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+          if(regEx.test(user.email)){
+            await axios.post('/Login',user).then((Response)=>{
+              if(Response.data==="success"){
+                navigate('/');
+              }else if(Response.data==="Password Not Match"){
+                window.alert("Password Are Not Match");
+              }else{
+                window.alert("Please Register First");
+              }
+            })
+          }else{
+            setMessage("Please Enter Valid Email");
+          }
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +73,7 @@ const Login = () => {
                                          
                                         name='password' id='password' autoComplete='off' placeholder='Enter your password' />
                                       </div>
+                                      <p className='message text-danger m-0 '>{message}</p>
                                       <div className='form-control'>
                                       <div className='form-group1 form-button'>
                                           <input type="submit" 

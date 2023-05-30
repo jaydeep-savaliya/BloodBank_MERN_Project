@@ -1,0 +1,390 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: transparent;
+  }
+  span{
+    margin-left: 2rem;
+  }
+  /* register page css */
+  .container{
+    box-sizing: border-box;
+    height: auto;
+    width: auto;
+  }
+  .img2{
+    position: relative;
+    top: 5px;
+    margin-top: 1rem;
+    margin-left: 1.1rem;
+    height: 281px;
+    width: 248px;
+  }
+  .signup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 8px 0px rgba(99, 99, 99, 0.2);
+    margin-top: 5rem;
+    border-radius: 12px;
+  }
+  .signup-form{
+    margin-top: 1.8rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .signup-content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 2rem;
+  }
+  input[type=text]{
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    margin-left: 20px;
+    box-sizing: border-box;
+    width: 320px;
+  }
+  input[type=email]{
+    border: none;
+    margin-left: 20px;
+    box-sizing: border-box;
+    outline: none;
+    width: 320px;
+  }
+  input[type=number]{
+    border: none;
+    margin-left: 20px;
+    box-sizing: border-box;
+    outline: none;
+    width: 320px;
+  }
+  input[type=password]{
+    border: none;
+    margin-left: 20px;
+    box-sizing: border-box;
+    outline: none;
+    width: 320px;
+  }
+  input[type=date]{
+    border: none;
+    margin-left: 20px;
+    box-sizing: border-box;
+    outline: none;
+    width: 13.6rem;
+  }
+  input[type=submit]{
+    border: none;
+    margin-top: 15px;
+    background:blue;
+    outline: none;
+    border-radius: 4px;
+    width: 79px;
+    text-align: center;
+  }
+  select{
+    border: none;
+    margin-left: 20px;
+    box-sizing: border-box;
+    outline: none;
+    width: 13.6rem;
+  }
+  h2{
+    margin-left: 1.4rem;
+    font-size: 2rem;
+  }
+  .register-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    margin-left: 1rem;
+  }
+  label{
+    position: absolute;
+  }
+  .form-group{
+    border-bottom: 1px solid black;
+    margin: 0.9rem;
+  }
+  .login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 8px 0px rgba(99, 99, 99, 0.2);
+    margin-top: 4rem;
+    border-radius: 12px;
+  }
+  .login-content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 2rem;
+  }
+  .login-form{
+    margin-top: 1.8rem;
+    margin-bottom: 2.5rem;
+  }
+  h1{
+    margin-left: 1.4rem;
+    font-size: 2rem;
+  }
+  .submit-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    margin-left: 1rem;
+  }
+  .img1{
+    position: relative;
+    top: -9px;
+    height: 231px;
+    width: 231px;
+    margin-top: 1rem;
+    margin-left: 3rem;
+  }
+  .contact_info{
+    box-sizing: border-box;
+      margin-top: 2rem;
+      margin-left: 4rem;
+      margin-right: 4rem;
+  }
+  .contact_details{
+    box-shadow: 0px 2px 8px 0px rgba(99, 99, 99, 0.2);
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+    height: 72px;
+  }
+  .contact_info_content{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2.4rem;
+  }
+  #zmdi{
+    scale: 1.5;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 20px;
+  }
+  .contact_info_title{
+    font-weight: bold;
+  }
+  .contact_info_text{
+    font-weight: 100;
+    font-size: x-small;
+  }
+  /* home page css */
+  .img_carosoul{
+    display: flex;
+   
+  }
+  #carosoul{  
+    margin-top: 1.5rem;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  img{
+    height: 16rem;
+    width: 50%;
+  }
+  #Blood_info{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+  #Blood_info h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 60px;
+    text-transform: uppercase;
+  }
+  
+  /* navbar css */
+  nav{
+    height: 28px;
+    width: 100%;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  }
+  #nav_ul{
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: 5rem;
+  }
+  #nav_ul li{
+    margin: 0.5rem;
+  }
+  /* card css */
+  .cards{
+    margin-left: 5.9rem;
+    width: 90%;
+    height: auto;
+  }
+  .cards .card{
+    margin-left: 5.8%;
+    margin-right: 5.8%;
+    margin-bottom: 4%;
+    transition : 0.2s ease-in-out;
+    background-color: #fff;
+    width: 21.25%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    float: left;
+  }
+  .card_img{
+    width: 60%;
+    height: 180px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    margin-left: 3.5rem;
+  }
+  .cards .card .card_info{
+    position: relative;
+    background-color: #fff;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    visibility : hidden;
+    opacity : 1;
+    transition : 0s ease-in-out;
+    height: 50px;
+  }
+  .cards .card:hover .card_info{
+    visibility : visible;
+     opacity : 1;
+     transition-delay: 0s;
+     height: auto;
+  }
+  .card_category{
+    margin: 0;
+    padding: 0;
+    font-weight: bolder;
+    color: black;
+    text-transform: uppercase;
+    font-size: 25px;
+    letter-spacing: 2px;
+    background-color: #fff;
+  }
+  .card_title{
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-transform: capitalize;
+    text-align: justify;
+  }
+  
+  /* donate css */
+  .donate_head{
+    text-align: start;
+    margin-left: 1.5rem;
+  }
+  .donate-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .donate_form_head{
+    width: 18rem;
+  }
+  .donate_form_bottom{
+    width: 18.5rem;
+  }
+  .stock_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+    margin-top: 5rem;
+    border-radius: 11px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  .page_header{
+    text-transform: capitalize;
+    text-decoration: double;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+  }
+  .select_header{
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+  }
+  .stock_check{
+    text-align: center;
+    border: none;
+    margin-left: 2.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    border-radius: 0.1rem;
+  }
+  .stock_check:hover{
+    box-shadow: none;
+  }
+  .select_header:hover{
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+  .submit_button{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .stock_submit{
+    color: black;
+    height: 30px;
+  }
+  .stock_table{
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .stock_table thead{
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+  }
+  .stock_table thead th:hover{
+    border: 2px solid rgb(186, 12, 12);
+    background-color: red;
+    color: white;
+  }
+  .stock_table tbody{
+    border: none;
+    border-bottom: none;
+  }
+  .stock_table td:hover{
+    background-color: green;
+  }
+  .form-control{
+    display: flex;
+    border: none;
+    justify-content: center;
+  }
+  #signup{
+    margin-left: rem;
+    margin-right: 1rem;
+  }
+  
+  

@@ -17,8 +17,9 @@ const Donate = () => {
   const postData = async(e)=>{
     e.preventDefault();
     try {
-      const {name,email,phone,work,date,gender,address,bloodgroup} = user;
+      // const {name,email,phone,work,date,gender,address,bloodgroup} = user;
       await axios.post('/Donate',user).then((Response)=>{
+        console.log(Response.status);
         if(Response.data==="fail"){
           window.alert("Please Register First");
           navigate('/Register');
@@ -34,16 +35,16 @@ const Donate = () => {
   }
   return (
     <>
-          <section class="h-100 h-custom" >
-          <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-lg-10 col-xl-6">
-                <div class="card rounded-3">
+          <section className="h-100 h-custom" >
+          <div className="container py-5 h-100">
+            <div className="row d-flex justify-content-center align-items-center h-100">
+              <div className="col-lg-10 col-xl-6">
+                <div className="card rounded-3">
                   <img src={donate}
-                    class="w-100"
+                    className="w-100"
                     alt="" />
-                  <div class="card-body ">
-                    <h3 class="donate_head ">Blood Donate Form</h3>
+                  <div className="card-body ">
+                    <h3 className="donate_head ">Blood Donate Form</h3>
                     <form method="POST" className='donate-form  ' id='register-form'>
                             <div className='row m-2'>
                                 <div className='col col-5 donate_form_head'>
@@ -109,13 +110,13 @@ const Donate = () => {
                                   </div>
                                   <div className='form-group'>
                                       <label htmlFor="gender">
-                                        <i class="zmdi zmdi-male-female"></i>
+                                        <i className="zmdi zmdi-male-female"></i>
                                       </label>
                                       <input type="text" placeholder='Enter Your Gender' name='gender' onChange={HandleINput} 
                                       value={user.gender}/>
                                   </div>
                                   <div className='form-group'>
-                                      <label htmlFor="bloodgroup"><i class="zmdi zmdi-invert-colors"></i></label>
+                                      <label htmlFor="bloodgroup"><i className="zmdi zmdi-invert-colors"></i></label>
                                       <select name="bloodgroup" id="bloodgroup" onChange={HandleINput} value={user.bloodgroup} >
                                       <option  value="Select an option">Select an option</option>
                                       <option  value="O Positive">O Positive</option>

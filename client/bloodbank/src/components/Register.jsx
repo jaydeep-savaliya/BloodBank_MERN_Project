@@ -7,24 +7,29 @@ const Register = () => {
   const[user,setUser] = useState({
     name:"",email:"",phone:"",work:"",password:"",cpassword:""
   });
+  const [message,setMessage] = useState('');
       const HandleINput = (e)=>{
-        console.log(e); 
         const name = e.target.name;
         const value = e.target.value;
         setUser({...user,[name]:value});
       }
     const postData = async(e)=>{
       e.preventDefault();
-      const { name,email,phone,work,password,cpassword  } = user;
+      // const { name,email,phone,work,password,cpassword  } = user;
       try {
+          const regEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+          if(regEx.test(user.email)){
           axios.post('/Register',user).then((Response)=>{
-            if(Response.data==="fail"){
-              window.alert("Please Fill Form Properly");
-            }else{
-              window.alert("Successfully Register");
-              navigate('/');
-            }
+           if(Response.data==="fail"){
+            alert("Please Fill Form Properly");
+           }else{
+            alert("Succesfully Register");
+            navigate('/Home');
+           }
           });
+        }else{
+          setMessage("Please Enter Valid Email");
+        }
       } catch (error) {
         window.alert("Please Fill Form Properly");
         console.log(error);
@@ -53,7 +58,7 @@ const Register = () => {
                                 placeholder='Your Name' />
                               </div>
                               <div className='form-group'>
-                              <label htmlFor="name">
+                                <label htmlFor="name"> 
                                   <i className='zmdi zmdi-email'></i>
                                 </label>
                                 <input type="email"
@@ -97,6 +102,7 @@ const Register = () => {
                                 onChange={HandleINput}
                                 name='cpassword' id='cpassword' autoComplete='off' placeholder='Conform password' />
                               </div>
+                              <p className='text-danger m-0 p-0'>{message}</p>
                               <div className='form-group1 form-button'>
                                   <input type="submit" onClick={postData} name='signup' id='signup' className='form-submit' />
                               </div>

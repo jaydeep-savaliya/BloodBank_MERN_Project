@@ -8,9 +8,15 @@ const Stock = () => {
   const[user,setUser] = useState({
     statename:"",distname:"",bloodgroup:"",bloodcomponent:""
   });
+  const handleInput=(e)=>{
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    setUser({...user,[name]:value});
+  }
   const DataShow = async(e)=>{
     e.preventDefault();
-    const {statename,distname,bloodgroup,bloodcomponent} = user;
+    // const {statename,distname,bloodgroup,bloodcomponent} = user;
     try {
       await axios.post('/Stock',user).then((Response)=>{
         if(Response.data==="fail"){
@@ -26,13 +32,7 @@ const Stock = () => {
       console.log(error);
     }
   }
-  console.log(data);
-  const handleInput=(e)=>{
-    e.preventDefault();
-    const name = e.target.name;
-    const value = e.target.value;
-    setUser({...user,[name]:value});
-  }
+  // console.log(data);
   return (
     <>
       <div className='container stock_container'>
