@@ -6,7 +6,7 @@ const Home = () => {
   const[data,setData] = useState([]);
   const fetchData = async()=>{
     try {
-      axios.get('http://localhost:5000/').then(Response=>{
+      await axios.get('http://localhost:5000/').then(Response=>{
         if(Response.data==="fail"){
           alert("Fail");
         }else{
@@ -20,7 +20,7 @@ const Home = () => {
   // console.log(data);
   useEffect(()=>{
     fetchData();
-  });
+  },[]);
   return (
     <>
       <section id='home_section'>

@@ -1,6 +1,6 @@
-import React from 'react'
 import { Link,NavLink } from 'react-router-dom'
 const Navbar = () => {
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2">
@@ -13,9 +13,10 @@ const Navbar = () => {
                     <li className="nav-item active">
                       <Link className="nav-link" to="/">Home</Link>
                     </li>
-                    <li className="nav-item active">
+                    {
+                      <li className="nav-item active">
                       <Link className="nav-link" to="/Login">Sign In</Link>
-                    </li>
+                    </li> }
                     <li className="nav-item active">
                       <Link className="nav-link" to="/Stock">Stock</Link>
                     </li>
@@ -24,6 +25,9 @@ const Navbar = () => {
                     </li> */}
                     <li className="nav-item active">
                       <Link className="nav-link" to="/Donate">Donate</Link>
+                    </li>
+                    <li className="nav-item active">
+                      <Link className="nav-link" to="/Profile">Profile</Link>
                     </li>
                   </ul>
                 </div>

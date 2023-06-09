@@ -1,15 +1,20 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const Donate = require('../model/blood_donate');
 const Info = require('../model/blood_info');
 const Registerdata = require('../model/register_data');
 const BloodData = require('../model/blood_stock_data');
+const statedata = require('../model/state_district');
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
+const Authenticate = require('../middleware/authenticate');
 require('../db/conn');
 const router = express.Router();
+const cookieParser = require("cookie-parser");
+router.use(cookieParser());
 router.get('/',async(req,res)=>{
     try {
-        const data = await Info.find({});
+        const data = await Info.find();
         return res.json(data);
     } catch (error) {
         console.log(error);
@@ -20,11 +25,6 @@ router.post('/Donate',async(req,res)=>{
     const {name,email,phone,work,date,gender,address,bloodgroup} = req.body;
     try {
         const emailid = await Registerdata.findOne({email:email});
-        // console.log(emailid);
-        // console.log(email);
-        // console.log(phone);
-        // console.log(emailid.email);
-        // console.log(emailid.phone);
         if(emailid!=null){
             if(email==emailid.email && phone==emailid.phone){
                 const data = await Donate({name,email,phone,work,date,gender,address,bloodgroup});
@@ -61,6 +61,11 @@ router.post('/Login',async(req,res)=>{
         const emailid = await Registerdata.findOne({email:email});
         if(emailid!=null){
             const isMatch = await bcrypt.compare(password,emailid.password);
+            const token = await emailid.generateAuthToken();
+            res.cookie("jwtoken",token,{
+                expires:new Date(Date.now()+3600000),
+                httpOnly:true
+            });
             if(isMatch){
                 return res.json("success");
             }else{
@@ -74,13 +79,11 @@ router.post('/Login',async(req,res)=>{
     }
 });
 router.post('/Stock',async(req,res)=>{
-    const {statename,distname,bloodgroup,bloodcomponent} = req.body;
+    const {distname,bloodgroup} = req.body;
     const data = await BloodData.find({$and:[
-        {state:statename},
         {district:distname},
         {bloodgroup:bloodgroup}]
     });
-    // console.log(data);
     const len = Object.keys(data).length;
     try {
         if(len===0){
@@ -91,5 +94,17 @@ router.post('/Stock',async(req,res)=>{
     } catch (error) {
         return res.json("fail");
     }
+});
+router.post('/district',async(req,res)=>{
+    const {statename} = req.body;
+    try {
+        const mydata = await statedata.find({state:statename},{districts:1});
+        return res.json(mydata);
+    } catch (error) { 
+        return res.json("fail");
+    }
 })
+router.get("/Profile",Authenticate,async(req,res)=>{
+   return res.json(req.rootUser);
+});
 module.exports = router;

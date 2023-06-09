@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Info = require('../model/blood_info');
+const statedata = require('../model/state_district');
 const BloodData = require('../model/blood_stock_data');
 const DB = 'mongodb+srv://jaydeeps048:HAzsaAhTCMKUprVG@cluster0.eimxzrp.mongodb.net/BloodWeb';
 mongoose.connect(DB,{
@@ -42,3 +43,8 @@ mongoose.connect(DB,{
 //     console.log(data);
 // }
 // getData();
+const getdata = async()=>{
+    const data = await statedata.find({"state":"Gujrat"});
+}
+getdata();
+

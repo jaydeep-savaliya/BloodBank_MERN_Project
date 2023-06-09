@@ -24,7 +24,7 @@ const Register = () => {
             alert("Please Fill Form Properly");
            }else{
             alert("Succesfully Register");
-            navigate('/Home');
+            navigate('/');
            }
           });
         }else{

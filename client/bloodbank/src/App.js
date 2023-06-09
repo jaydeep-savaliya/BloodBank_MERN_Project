@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Stock from './components/Stock'; 
 import Register from './components/Register';
 import Donate from './components/Donate';
+import Profile from './components/Profile';
 const App = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const App = () => {
         <Route exact path='/Stock' element={<Stock/>}/>
         <Route exact path='/Register' element={<Register/>}/>
         <Route exact path='/Donate' element={<Donate/>}/>
+        <Route exact path='/Profile' element={<Profile/>} />
       </Routes>
     </>
   )

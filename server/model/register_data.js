@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = 'JAYDIPSAVALIYAISTHECOMPUTERENGINEER';
 const RegisterSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -24,7 +26,15 @@ const RegisterSchema = new mongoose.Schema({
     cpassword:{
         type:String,
         required:true,
-    }
+    },
+    tokens:[
+        {
+            token:{
+                type:String,
+                required:true
+            }
+        }
+    ]
 });
 RegisterSchema.pre('save',async function(next){
     try {
@@ -36,6 +46,16 @@ RegisterSchema.pre('save',async function(next){
     } catch (error) {
         console.log(error);
     }
-})
+});
+RegisterSchema.methods.generateAuthToken = async function(){
+    try {
+        const token = jwt.sign({_id:this._id},SECRET_KEY);
+        this.tokens = this.tokens.concat({token:token});
+        await this.save();
+        return token;
+    } catch (error) {
+        console.log(error);
+    }
+}
 const Registerdata = new mongoose.model('Registerdata',RegisterSchema);
 module.exports = Registerdata;

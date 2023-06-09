@@ -1,14 +1,14 @@
 import React from 'react'
 import Image  from './Image';
-const Card = (props) => {
+const Card = ({information,name,percentage,image}) => {
   return (
     <>  
       <div className='cards'>
             <div className='card'>
-            <Image imgsrc={props.image}/>
+            <Image imgsrc={image}/>
                 <div className='card_info'>
-                    <span className='card_category'>{props.name}</span>
-                    <p className='card_title'>{props.information}</p>
+                    <span className='card_category'>{name}</span>
+                    <p className='card_title'>{information}</p>
                 </div>
             </div>
         </div>

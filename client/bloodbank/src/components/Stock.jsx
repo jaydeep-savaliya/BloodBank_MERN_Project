@@ -1,28 +1,50 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 const Stock = () => {
-  const navigate = useNavigate();
   const [show,setShow] = useState();
+  const [sta,setSta] = useState([]);
   const[data,setData] = useState([]);
-  const[user,setUser] = useState({
-    statename:"",distname:"",bloodgroup:"",bloodcomponent:""
+  const [state,setState] = useState({
+    statename:"Select State"
   });
-  const handleInput=(e)=>{
+  const[user,setUser] = useState({
+    distname:"",bloodgroup:"",bloodcomponent:""
+  });
+  const handleInput=async(e)=>{
     e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
     setUser({...user,[name]:value});
   }
+  const  getStateData = async(e)=>{
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    setState({...state,[name]:value});
+  }
+  useEffect(() => {
+      async function dist(){
+        try {
+          await axios.post('/district',state).then(Response=>{
+            if(Response.data==="fail"){
+              alert("No Found City");
+            }else{
+              setSta(Response.data);
+            }
+          })
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      dist();
+  }, [state]);
   const DataShow = async(e)=>{
     e.preventDefault();
-    // const {statename,distname,bloodgroup,bloodcomponent} = user;
     try {
-      await axios.post('/Stock',user).then((Response)=>{
+      await axios.post('/Stock',user).then(Response=>{
         if(Response.data==="fail"){
           setShow(false);
           window.alert("Data Not Found");
-          navigate('/Stock');
         }else{
           setShow(true);
           setData(Response.data);
@@ -32,7 +54,6 @@ const Stock = () => {
       console.log(error);
     }
   }
-  // console.log(data);
   return (
     <>
       <div className='container stock_container'>
@@ -46,15 +67,58 @@ const Stock = () => {
         <div className='select_header'>
           <div className='row'>
             <div className='col'>
-              <select name="statename" className='stock_check' id="statename" value={user.statename} onChange={handleInput}>
+              <select name="statename" className='stock_check' id="statename" value={state.statename} onChange={getStateData}>
                 <option value="Select State">Select State</option>
+                <option value="Assam">Assam</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Dadra and Nagar Haveli (UT)">Dadra and Nagar Haveli (UT)</option>
+                <option value="Daman and Diu (UT)">Daman and Diu (UT)</option>
+                <option value="Goa">Goa</option>
                 <option value="Gujrat">Gujrat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Lakshadweep (UT)">Lakshadweep (UT)</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Puducherry (UT)">Puducherry (UT)</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value=""></option>
               </select>
             </div>
             <div className='col'>
             <select name="distname" className='stock_check' id="distname" value={user.distname} onChange={handleInput}>
                 <option value="Select District">Select District</option>
-                <option value="Ahmedabad">Ahmedabad</option>
+                {
+                  sta.map((val)=>{
+                    return(
+                      val.districts.map((re,index)=>{
+                        return(
+                          <option key={index} value={re}>{re}</option>
+                        )
+                      })
+                    )
+                  })
+                }
               </select>
             </div>
             <div className='col'>
@@ -87,7 +151,7 @@ const Stock = () => {
         </div>
       </div>
       <div className='container'>
-        {show &&  <table class="table table-bordered stock_table">
+        {show &&  <table className="table table-bordered stock_table">
             <thead>
               <tr>
                 <th>Sr No</th>
