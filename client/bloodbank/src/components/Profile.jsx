@@ -16,7 +16,6 @@ const navigate = useNavigate();
           credentials:"include",
         });
         const data = await res.json();
-        // console.log(data);
         setMyData(data);
       } catch (error) {
         console.log(error);

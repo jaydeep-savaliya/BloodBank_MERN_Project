@@ -7,11 +7,7 @@ const Home = () => {
   const fetchData = async()=>{
     try {
       await axios.get('http://localhost:5000/').then(Response=>{
-        if(Response.data==="fail"){
-          alert("Fail");
-        }else{
           setData(Response.data);
-        }
       })
     } catch (error) {
       console.log(error);
