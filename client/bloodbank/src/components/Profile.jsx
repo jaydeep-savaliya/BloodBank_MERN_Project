@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MyContext } from './MyContext';
 const Profile = () => {
+  const {dispatch} = useContext(MyContext);
 const navigate = useNavigate();
   const[mydata,setMyData] = useState([]);
   useEffect(() => {
@@ -16,9 +18,11 @@ const navigate = useNavigate();
           credentials:"include",
         });
         const data = await res.json();
+        dispatch({type:"USER",payload:true})
         setMyData(data);
       } catch (error) {
         console.log(error);
+        dispatch({type:"USER",payload:false})
         navigate("/Login");
       }
     };

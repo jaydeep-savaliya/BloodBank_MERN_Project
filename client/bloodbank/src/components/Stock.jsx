@@ -106,14 +106,14 @@ const Stock = () => {
               </select>
             </div>
             <div className='col'>
-            <select name="distname" className='stock_check' id="distname" value={user.distname} onChange={handleInput}>
+            <select name="distname" className='stock_check ' id="distname" value={user.distname} onChange={handleInput}>
                 <option value="Select District">Select District</option>
                 {
                   sta.map((val)=>{
                     return(
                       val.districts.map((re,index)=>{
                         return(
-                          <option key={index} value={re}>{re}</option>
+                          <option  key={index} value={re}>{re}</option>
                         )
                       })
                     )

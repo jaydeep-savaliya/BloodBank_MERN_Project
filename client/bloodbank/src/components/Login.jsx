@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import sign_img  from '../image/6310507.jpg';
+import { MyContext } from './MyContext';
 const Login = () => {
+  const {dispatch} = useContext(MyContext);
   const navigate = useNavigate();
   const [message,setMessage] = useState('');
   const [user,setUser] = useState({
@@ -18,12 +20,12 @@ const Login = () => {
   }
   const DoLogin = async(e)=>{
     e.preventDefault();
-    // const {email,password} = user;
     try {
       const regEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
           if(regEx.test(user.email)){
             await axios.post('/Login',user).then((Response)=>{
               if(Response.data==="success"){
+                dispatch({type:"USER",payload:true})
                 navigate('/');
               }else if(Response.data==="Password Not Match"){
                 window.alert("Password Are Not Match");

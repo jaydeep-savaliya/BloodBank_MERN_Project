@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, {  useEffect,useState } from 'react'
 import axios from "axios";
 import img from '../image/pngtree-blood-donation-art-free-simple-white-banner-image_180424-removebg-preview.png';
 import Card from './Card';
@@ -13,10 +13,10 @@ const Home = () => {
       console.log(error);
     }
   }
-  // console.log(data);
   useEffect(()=>{
+    
     fetchData();
-  },[]);
+  });
   return (
     <>
       <section id='home_section'>

@@ -103,8 +103,12 @@ router.post('/district',async(req,res)=>{
     } catch (error) { 
         return res.json("fail");
     }
-})
+});
 router.get("/Profile",Authenticate,async(req,res)=>{
    return res.json(req.rootUser);
 });
+router.get('/Logout',async(req,res)=>{
+    res.clearCookie('jwtoken',{path:'/'});
+    return res.status(200).json("Logout Successful");
+})
 module.exports = router;

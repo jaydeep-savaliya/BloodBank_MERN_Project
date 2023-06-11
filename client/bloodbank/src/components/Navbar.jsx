@@ -1,6 +1,52 @@
-import { Link,NavLink } from 'react-router-dom'
+import { useContext } from 'react';
+import { NavLink } from 'react-router-dom'
+import { MyContext } from './MyContext';
 const Navbar = () => {
-
+  const {state} = useContext(MyContext);
+  const RenderMenu = ()=>{
+    if(state){
+      return(
+        <>
+          <li className="nav-item active">
+                      <NavLink className="nav-link" to="/">Home</NavLink>
+                    </li>
+                    <li className="nav-item active">
+                      <NavLink className="nav-link" to="/Stock">Stock</NavLink>
+                    </li>
+                    <li className="nav-item active">
+                      <NavLink className="nav-link" to="/Donate">Donate</NavLink>
+                    </li>
+                    <li className="nav-item active">
+                      <NavLink className="nav-link" to="/Profile">Profile</NavLink>
+                    </li>
+                    <li className="nav-item active">
+                      <NavLink className="nav-link" to="/Logout">Logout</NavLink>
+                    </li>
+        </>
+      )
+    }else{
+      return(
+        <>
+        <li className="nav-item active">
+                      <NavLink className="nav-link" to="/">Home</NavLink>
+                    </li>
+                    
+                      <li className="nav-item active">
+                      <NavLink className="nav-link" to="/Login">Sign In</NavLink>
+                    </li> 
+                    <li className="nav-item active">
+                      <NavLink className="nav-link" to="/Stock">Stock</NavLink>
+                    </li>
+                    <li className="nav-item active">
+                      <NavLink className="nav-link" to="/Donate">Donate</NavLink>
+                    </li>
+                    <li className="nav-item active">
+                      <NavLink className="nav-link" to="/Profile">Profile</NavLink>
+                    </li>
+        </>
+      )
+    }
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2">
@@ -10,25 +56,7 @@ const Navbar = () => {
             </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul className="navbar-nav" id='nav_ul'>
-                    <li className="nav-item active">
-                      <Link className="nav-link" to="/">Home</Link>
-                    </li>
-                    {
-                      <li className="nav-item active">
-                      <Link className="nav-link" to="/Login">Sign In</Link>
-                    </li> }
-                    <li className="nav-item active">
-                      <Link className="nav-link" to="/Stock">Stock</Link>
-                    </li>
-                    {/* <li className="nav-item active">
-                      <Link className="nav-link" to="/Register">Register</Link>
-                    </li> */}
-                    <li className="nav-item active">
-                      <Link className="nav-link" to="/Donate">Donate</Link>
-                    </li>
-                    <li className="nav-item active">
-                      <Link className="nav-link" to="/Profile">Profile</Link>
-                    </li>
+                    <RenderMenu/>
                   </ul>
                 </div>
         </nav>
