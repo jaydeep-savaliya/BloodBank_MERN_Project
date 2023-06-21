@@ -112,8 +112,11 @@ const Donate = () => {
                                       <label htmlFor="gender">
                                         <i className="zmdi zmdi-male-female"></i>
                                       </label>
-                                      <input type="text" placeholder='Enter Your Gender' name='gender' onChange={HandleINput} 
-                                      value={user.gender}/>
+                                      <select name="gender" id='gender' onChange={HandleINput} value={user.gender}>
+                                        <option value="Select Gender">Select Gender</option>
+                                        <option value="male">male</option>
+                                        <option value="female">female</option>
+                                      </select>
                                   </div>
                                   <div className='form-group'>
                                       <label htmlFor="bloodgroup"><i className="zmdi zmdi-invert-colors"></i></label>

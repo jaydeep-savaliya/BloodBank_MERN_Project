@@ -45,6 +45,9 @@ const Stock = () => {
         if(Response.data==="fail"){
           setShow(false);
           window.alert("Data Not Found");
+        }
+        else if(Response.data=="Please Enter The Correct Details"){
+            alert("Please Enter The Correct Details");
         }else{
           setShow(true);
           setData(Response.data);
@@ -56,7 +59,7 @@ const Stock = () => {
   }
   return (
     <>
-      <div className='container stock_container'>
+      <div className='container stock_container bg-white'>
         <div className='row'>
           <div className='col col-10'>
             <div className='page_header'>
@@ -138,6 +141,7 @@ const Stock = () => {
             <select name="bloodcomponent" className='stock_check' id="bloodcomponent" value={user.bloodcomponent} onChange={handleInput}>
                 <option value="Select BloodComponent">Select BloodComponent</option>
                 <option value="Blood Donor">Blood Donor</option>
+                <option value="Find Blood">Find Blood</option>
               </select>
             </div>
           </div>

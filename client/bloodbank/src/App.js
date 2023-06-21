@@ -11,6 +11,7 @@ import Donate from './components/Donate';
 import Profile from './components/Profile';
 import Logout from './components/Logout';
 import { initalState, reducer } from './reducer/useReducer';
+import Contacts from './components/Contacts';
 const App = () => {
   const [state, dispatch] = useReducer(reducer,initalState);
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route exact path='/Donate' element={<Donate/>}/>
         <Route exact path='/Profile' element={<Profile/>} />
         <Route exact path='/Logout' element={<Logout/>}/>
+        <Route exact path='/Contacts' element={<Contacts/>}/>
       </Routes>
       </MyContext.Provider>
     </>

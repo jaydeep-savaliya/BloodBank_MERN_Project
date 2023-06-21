@@ -79,18 +79,26 @@ router.post('/Login',async(req,res)=>{
     }
 });
 router.post('/Stock',async(req,res)=>{
-    const {distname,bloodgroup} = req.body;
-    const data = await BloodData.find({$and:[
-        {district:distname},
-        {bloodgroup:bloodgroup}]
-    });
-    const len = Object.keys(data).length;
+    const {distname,bloodgroup,bloodcomponent} = req.body;
     try {
-        if(len===0){
-            return res.json("fail");
+        if(!distname || !bloodgroup || !bloodcomponent){
+            return res.json("Please Enter The Correct Details");
         }else{
-            return res.json(data);
-        }
+            if(bloodcomponent=="Find Blood"){
+                const data = await BloodData.find({$and:[
+                    {district:distname},
+                    {bloodgroup:bloodgroup}]
+                });
+                const len = Object.keys(data).length;
+                if(len===0){
+                    return res.json("fail");
+                }else{
+                    return res.json(data);
+                }
+            }else{
+                return res.json("fail");
+            }
+    }
     } catch (error) {
         return res.json("fail");
     }
