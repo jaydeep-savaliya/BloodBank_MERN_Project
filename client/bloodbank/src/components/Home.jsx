@@ -83,9 +83,9 @@ const Home = () => {
                     <div class="col-sm-6 col-md-3 item">
                         <h3 style={{cursor:'pointer'}}>About</h3>
                         <ul>
-                            <li ><a href="#">Company</a></li>
+                            <li ><NavLink href="#">Company</NavLink></li>
                             <li><NavLink to="/Contacts">Team</NavLink></li>
-                            <li><a href="#">Careers</a></li>
+                            <li><NavLink href="#">Careers</NavLink></li>
                         </ul>
                     </div>
                     <div class="col-md-6 item text">
