@@ -21,16 +21,19 @@ const Login = () => {
   const DoLogin = async(e)=>{
     e.preventDefault();
     try {
-      const regEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+          const regEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
           if(regEx.test(user.email)){
+            setMessage('');
             await axios.post('/Login',user).then((Response)=>{
               if(Response.data==="success"){
                 dispatch({type:"USER",payload:true})
                 navigate('/');
+              }else if(Response.data==="Fill Form Properly"){
+                alert("Enter User or E-mail COrrectly");
               }else if(Response.data==="Password Not Match"){
-                window.alert("Password Are Not Match");
+                alert("Password Are Not Match");
               }else{
-                window.alert("Please Register First");
+                alert("Please Register First");
               }
             })
           }else{

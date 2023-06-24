@@ -18,11 +18,11 @@ const navigate = useNavigate();
           credentials:"include",
         });
         const data = await res.json();
-        dispatch({type:"USER",payload:true})
+        dispatch({type:"USER",payload:true});
         setMyData(data);
       } catch (error) {
         console.log(error);
-        dispatch({type:"USER",payload:false})
+        dispatch({type:"USER",payload:false});
         navigate("/Login");
       }
     };
@@ -64,7 +64,7 @@ const navigate = useNavigate();
                   </div>
                   <div className="col-6 mb-3">
                     <h6>Most Viewed</h6>
-                    <p className="text-muted">Dolor sit amet</p>
+                    <p className="text-muted">GECG</p>
                   </div>
                 </div>
                 <div className="d-flex justify-content-start">

@@ -24,7 +24,10 @@ router.get('/',async(req,res)=>{
 router.post('/Donate',async(req,res)=>{
     const {name,email,phone,work,date,gender,address,bloodgroup} = req.body;
     try {
-        const emailid = await Registerdata.findOne({email:email});
+        if(!name || !email || !phone || !work || !date || !gender || !address || !bloodgroup){
+            return res.json("please fill form correct");
+        }else{
+            const emailid = await Registerdata.findOne({email:email});
         if(emailid!=null){
             if(email==emailid.email && phone==emailid.phone){
                 const data = await Donate({name,email,phone,work,date,gender,address,bloodgroup});
@@ -36,6 +39,7 @@ router.post('/Donate',async(req,res)=>{
         }else{
             return res.json("fail");
         }
+        }
     } catch (error) {
         return res.json("fail");
     }
@@ -44,12 +48,22 @@ router.post('/Register',async(req,res)=>{
     const { name,email,phone,work,password,cpassword  } = req.body;
     const len = phone.length;
     try {
-        if(password===cpassword && len===10){
-            const data = await Registerdata({name,email,phone,work,password,cpassword});
-            const userData = await data.save();
-            return res.json("success");
+        if(!name || !email || !phone || !work || !password || !cpassword){
+            return res.json("Fill Form Properly");
         }else{
-            return res.json("fail");
+            const emailid = await Registerdata.find({email:email});
+        if(!emailid){
+            if(password===cpassword && len===10){
+                const data = await Registerdata({name,email,phone,work,password,cpassword});
+                await data.save();
+                return res.json("success");
+            }else{
+                return res.json("fail");
+            }
+        }else{
+            console.log("Already Register");
+            return res.json("Already Register");
+        }
         }
     } catch (error) {
         return res.json("fail");
@@ -58,7 +72,10 @@ router.post('/Register',async(req,res)=>{
 router.post('/Login',async(req,res)=>{
     try {
         const {email,password} = req.body;
-        const emailid = await Registerdata.findOne({email:email});
+        if(!email || !password){
+            return res.json("Fill Form Properly");
+        }else{
+            const emailid = await Registerdata.findOne({email:email});
         if(emailid!=null){
             const isMatch = await bcrypt.compare(password,emailid.password);
             const token = await emailid.generateAuthToken();
@@ -73,6 +90,7 @@ router.post('/Login',async(req,res)=>{
             }
         }else{
             return res.json("fail");
+        }
         }
     } catch (error) {
         return res.json("fail");

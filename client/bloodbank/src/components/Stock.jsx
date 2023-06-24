@@ -46,8 +46,8 @@ const Stock = () => {
           setShow(false);
           window.alert("Data Not Found");
         }
-        else if(Response.data=="Please Enter The Correct Details"){
-            alert("Please Enter The Correct Details");
+        else if(Response.data==="Please Enter The Correct Details"){
+            alert("Please Select Correct Details");
         }else{
           setShow(true);
           setData(Response.data);

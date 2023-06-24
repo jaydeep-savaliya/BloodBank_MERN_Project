@@ -87,7 +87,7 @@
   input[type=submit]{
     border: none;
     margin-top: 15px;
-    background:blue;
+    background:rgb(104, 104, 247);
     outline: none;
     border-radius: 4px;
     width: 79px;
@@ -222,17 +222,25 @@
   
   /* navbar css */
   nav{
+    margin-top: 2rem;
     height: 28px;
     width: 100%;
-    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+    border: none;
+    background-color: rgb(244, 244, 244);
+    /* box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px; */
   }
   #nav_ul{
     margin: 0;
     padding: 0;
     margin-left: auto;
-    margin-right: 5rem;
   }
   #nav_ul li{
+    margin: 0.5rem;
+  }
+  .profile{
+    scale: 1.6;
+  }
+  .profile_span{
     margin: 0.5rem;
   }
   /* card css */

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import donate from '../image/donate.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -13,6 +13,7 @@ const Donate = () => {
     const name = e.target.name;
     const value = e.target.value;
     setUser({...user,[name]:value});
+      
   }
   const postData = async(e)=>{
     e.preventDefault();
@@ -23,6 +24,8 @@ const Donate = () => {
         if(Response.data==="fail"){
           window.alert("Please Register First");
           navigate('/Register');
+        }else if(Response.data==="please fill form correct"){
+          alert("please fill form Properly");
         }else{
           window.alert("Successfully Donate Request Sent");
           navigate('/');
@@ -33,6 +36,19 @@ const Donate = () => {
       navigate('/Register');
     }
   }
+  useEffect(() => {
+    if(user.gender==="male"){
+      let value = document.getElementById('gender_id');
+      value.className="zmdi zmdi-male";
+  }else  if(user.gender==="female"){
+    let value = document.getElementById('gender_id');
+    value.className="zmdi zmdi-female";
+  }else{
+      let value = document.getElementById('gender_id');
+      value.className="zmdi zmdi-male-female";
+  }
+  },[user.gender]);
+  
   return (
     <>
           <section className="h-100 h-custom" >
@@ -110,7 +126,7 @@ const Donate = () => {
                                   </div>
                                   <div className='form-group'>
                                       <label htmlFor="gender">
-                                        <i className="zmdi zmdi-male-female"></i>
+                                        <i className="zmdi zmdi-male-female" id='gender_id'></i>
                                       </label>
                                       <select name="gender" id='gender' onChange={HandleINput} value={user.gender}>
                                         <option value="Select Gender">Select Gender</option>

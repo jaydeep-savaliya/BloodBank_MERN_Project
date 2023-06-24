@@ -20,12 +20,16 @@ const Register = () => {
           const regEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
           if(regEx.test(user.email)){
           axios.post('/Register',user).then((Response)=>{
-           if(Response.data==="fail"){
-            alert("Please Fill Form Properly");
-           }else{
-            alert("Succesfully Register");
-            navigate('/');
-           }
+            if(Response.data==="fail"){
+              alert("Please Fill Form Properly");
+            }else if(Response.data==="Fill Form Properly"){
+                alert("Fill Form Properly");
+            }else if(Response.data==="Already Register"){
+              alert("Already Registered user");
+            }else{
+              alert("Succesfully Register");
+              navigate('/');
+            }
           });
         }else{
           setMessage("Please Enter Valid Email");
