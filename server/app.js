@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
+require("dotenv").config();
 const cors = require('cors');
 require('./db/conn');
-const port = 5000;
 app.use(cors());
 app.use(express.json());
 app.use(require('./router/auth'));
 app.use(express.urlencoded({extended:true}));
-app.listen(port,()=>{
-    console.log(`server Running At port no  ${port}`)
+app.listen(process.env.PORT,()=>{
+    console.log(`server Running At port no  ${process.env.PORT}`)
 });

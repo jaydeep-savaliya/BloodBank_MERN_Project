@@ -52,7 +52,7 @@ router.post('/Register',async(req,res)=>{
             return res.json("Fill Form Properly");
         }else{
             const emailid = await Registerdata.find({email:email});
-        if(!emailid){
+        if(Object.keys(emailid).length==0){
             if(password===cpassword && len===10){
                 const data = await Registerdata({name,email,phone,work,password,cpassword});
                 await data.save();
@@ -125,13 +125,17 @@ router.post('/district',async(req,res)=>{
     const {statename} = req.body;
     try {
         const mydata = await statedata.find({state:statename},{districts:1});
-        return res.json(mydata);
+        return res.status(200).json(mydata);
     } catch (error) { 
-        return res.json("fail");
+        return res.status(401).json("fail");
     }
 });
 router.get("/Profile",Authenticate,async(req,res)=>{
-   return res.json(req.rootUser);
+   try {
+        return res.json(req.rootUser);
+   } catch (error) {
+        return res.status(401).json(error);
+   }
 });
 router.get('/Logout',async(req,res)=>{
     res.clearCookie('jwtoken',{path:'/'});

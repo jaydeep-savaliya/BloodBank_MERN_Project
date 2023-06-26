@@ -68,11 +68,11 @@ const Home = () => {
         </div>
         <div className='row'>
           <div className='col'>
-          <div class="footer-dark">
+          <div className="footer-dark">
         <footer>
-            <div class="container">
-                <div class="row" style={{marginLeft:"12rem"}}>
-                    <div class="col-4 item">
+            <div className="container">
+                <div className="row" style={{marginLeft:"12rem"}}>
+                    <div className="col-4 item">
                         <h3 style={{cursor:'pointer'}}>Services</h3>
                         <ul>
                             <li><NavLink to="/Stock">Blood Stock Availability</NavLink></li>
@@ -80,7 +80,7 @@ const Home = () => {
                             <li><NavLink to="/Donate" >Donate Blood</NavLink></li>
                         </ul>
                     </div>
-                    <div class="col-4 item">
+                    <div className="col-4 item">
                         <h3 style={{cursor:'pointer'}}>About</h3>
                         <ul>
                             <li ><NavLink href="#">Company</NavLink></li>
@@ -88,16 +88,15 @@ const Home = () => {
                             <li><NavLink href="#">Careers</NavLink></li>
                         </ul>
                     </div>
-                    <div class="col-4 item text">
+                    <div className="col-4 item text">
                         <h3 style={{cursor:'pointer'}}>Team</h3>
                         <p>Jaydip</p>
                         <p>Om</p>
                         <p>Sagar</p>
                         <p>Bhargav</p>
-                    </div>
-                    
+                    </div>   
                 </div>
-                <p class="copyright">Design Engineering Project @ 2023</p>
+                <p className="copyright">Design Engineering Project @ 2023</p>
             </div>
         </footer>
     </div>
